@@ -4,15 +4,51 @@
 <script src="./boston.js"></script>
 <script>
   function renderBoston(boston, container) {
-   var person = boston.data;
+   var people = boston.data;
    var len = boston.data.length;
     var html = '';
     for (let i = 0; i < len; i++) {
       html += '<li class="boston">' +
-        '<h2>' + person[i][8] + '</h2>' +
-        '<h3>' + person[i][11] + '</h3>'
+        '<h2>' + people[i][8] + '</h2>' +
+        '<h3>' + people[i][11] + '</h3>'
     }
     container.innerHTML = '<ul id = "boston">' + html + '</ul>';
   }
   renderBoston(boston, document.getElementById('container'));
 </script>
+
+<!--&lt;!&ndash;<script>&ndash;&gt; IDK WHERE THIS CODE CAME FROM-->
+<!--  (function() {-->
+<!--    var ws = new WebSocket('ws://' + window.location.host + '/jb-server-page?reloadServiceClientId=100');-->
+<!--    ws.onmessage = function (msg) {-->
+<!--      if (msg.data === 'reload') {-->
+<!--        window.location.reload();-->
+<!--      }-->
+<!--      if (msg.data.startsWith('update-css ')) {-->
+<!--        var messageId = msg.data.substring(11);-->
+<!--        var links = document.getElementsByTagName('link');-->
+<!--        for (var i = 0; i < links.length; i++) {-->
+<!--          var link = links[i];-->
+<!--          if (link.rel !== 'stylesheet') continue;-->
+<!--          var clonedLink = link.cloneNode(true);-->
+<!--          var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);-->
+<!--          if (newHref !== link.href) {-->
+<!--            clonedLink.href = newHref;-->
+<!--          }-->
+<!--          else {-->
+<!--            var indexOfQuest = newHref.indexOf('?');-->
+<!--            if (indexOfQuest >= 0) {-->
+<!--              // to support ?foo#hash -->
+<!--              clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' +-->
+<!--                      newHref.substring(indexOfQuest + 1);-->
+<!--            }-->
+<!--            else {-->
+<!--              clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;-->
+<!--            }-->
+<!--          }-->
+<!--          link.replaceWith(clonedLink);-->
+<!--        }-->
+<!--      }-->
+<!--    };-->
+<!--  })();-->
+<!--</script>-->
